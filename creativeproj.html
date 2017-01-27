@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>The Memes</title>
+
+	<style>
+		body{
+			background: url(images/background);
+			background-size: cover;
+			background-atttactment: fixed;
+		}
+		h1{
+			font-weight: bold;
+			color: white;
+			font-size: 300%;
+		}
+		p{
+			color: white;
+			text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+			font-size: 400%;
+			font-family: Impact;
+		}
+
+	</style>
+    </head>
+    <body>
+
+    <h1>The Meme Machine</h1>
+    
+    <form id="memelist">
+        <label>
+            Select the meme that you would like...
+            <select name="memes">
+                <option value="firstworld">First World Problems</option>
+                <option value="harambe">Harambe</option>
+                <option value="simply">One Does Not Simply</option>
+		<option value="aliens">Aliens</option>
+		<option value="brian">Bad Luck Brian</option>
+		<option value="dikke">Dikke bmw</option>
+		<option value="handsome">Handsomeness</option>
+            </select>
+        </label>
+        <button type="submit">Generate picture</button>
+    </form>
+	
+	<form>
+		Enter your text here: <input type = "text" id = "memetext" placeholder= "Three words max...">
+		<button id="text-button" type = "button">Generate text</button>
+	</form>
+
+	<p>
+	<span id="textplacement"> </span>
+	</p>
+	
+	<script>
+		var textButton = document.getElementById("text-button");
+			var texter = function() {
+		var textDiv = document.getElementById("textplacement");
+		var meme = document.getElementById("memetext").value;
+		textDiv.innerHTML = meme;
+						};
+					textButton.addEventListener('click', texter);
+	</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+
+    var memeImages = {
+        "firstworld": "https://imgflip.com/s/meme/First-World-Problems.jpg",
+        "harambe": "https://cdn0.vox-cdn.com/thumbor/XIxup5-iMBEr0CHGlCwLD1hh-Qc=/800x0/filters:no_upscale()/cdn0.vox-cdn.com/uploads/chorus_asset/file/6571285/harambe2.0.jpg",
+        "simply": "https://imgflip.com/s/meme/One-Does-Not-Simply.jpg",
+	"aliens" : "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQUckABogtCXebMTbNfrKgj2tyQF-IoMMQMbqAJVRTL1jNh8Rf7GIhpgGER",
+	"brian" : "https://imgflip.com/s/meme/Bad-Luck-Brian.jpg",
+	"dikke" : "https://i.ytimg.com/vi/CzB6zYfzhd0/maxresdefault.jpg",
+	"handsome" : "https://scontent.fsnc1-4.fna.fbcdn.net/v/t1.0-9/12400502_10208050874287065_4494689344684020583_n.jpg?oh=70f9b096718dbb4c1918802f87b006c1&oe=5907ECD9",
+    };
+
+    
+    $("#memelist").on("submit", function(event) {
+        event.preventDefault();
+        var $memeCreate = $(this).find("[name=memes]");
+        var memeCreate = $memeCreate.val();
+        var $img = $("<img>");
+        $img.width(400);
+        $img.attr("src", memeImages[memeCreate]); 
+        $img.appendTo("body");
+
+        
+    });
+    </script>
+    </body>
+</html>
